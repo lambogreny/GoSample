@@ -7,7 +7,7 @@
   - [Authen](#authen-middleware)
   - [AllowRoles](#allowroles-middleware)
 - MVC (Comming Zoon)
-- Service (Comming Zoon)
+- Services (Comming Zoon)
 
 ## Main
 ```go
