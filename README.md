@@ -20,6 +20,7 @@
   - Socket
   - Chat
   - Worker
+  - Media
 
 ## Main
 ```go
