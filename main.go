@@ -9,7 +9,7 @@ import (
 
 func main() {
 	h := routes.Router()
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", h)
 	if err != nil {
 		log.Println(err)
 	}
