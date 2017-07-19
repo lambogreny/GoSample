@@ -3,13 +3,21 @@ package routes
 import (
 	"net/http"
 
+	"github.com/yuttasakcom/GoAPI/controllers"
 	"github.com/yuttasakcom/GoAPI/middleware"
 )
 
 // Router provider
 func Router() http.Handler {
+	// Serve mux
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", indexHandler)
+
+	// Serve file assets
+	mux.Handle("/-/", http.StripPrefix("/-", http.FileServer(http.Dir("assets"))))
+
+	// Home index
+	mux.Handle("/", controllers.Home("index"))
+
 	mux.HandleFunc("/about", aboutHandler)
 
 	mux.Handle("/staff", middleware.Chain(
@@ -18,10 +26,6 @@ func Router() http.Handler {
 	)(http.HandlerFunc(staffHandler)))
 
 	return mux
-}
-
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Index Page"))
 }
 
 func aboutHandler(w http.ResponseWriter, r *http.Request) {
