@@ -1,0 +1,91 @@
+{{define "root-body"}}
+<div class="container container-list">
+  <div class="row">
+    <div class="col-6">
+      <h4 class="pull-left">News Management</h4>
+    </div>
+    <div class="col-6">
+      <a href="http://localhost:8080/admin/create" class="btn btn-success pull-right">Create News</a>
+    </div>
+  </div>
+  <hr>
+  <table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Image</th>
+      <th>Topic</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><img src="/-/img/Global-Strategy-Connection-Data-Virtual-Icon-Innovation-Graph-Interface-1.jpg" width="50px;"></td>
+      <td>Otto</td>
+      <td>
+        <a href="/admin/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </a> | 
+        <a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td><img src="/-/img/checkpoint_copycat-by-the-numbers.jpg" width="50px;"></td>
+      <td>Thornton</td>
+      <td>
+        <a href="/admin/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </a> | 
+        <a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td><img src="/-/img/ttt_analytics_hacking-ra2studio.jpg" width="50px;"></td>
+      <td>the Bird</td>
+      <td>
+        <a href="/admin/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </a> | 
+        <a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td><img src="/-/img/a9fa8aecea54c285e99feb84baefb75a.jpg" width="50px;"></td>
+      <td>the Bird</td>
+      <td>
+        <a href="/admin/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </a> | 
+        <a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td><img src="/-/img/443a807c58e902bf030d5d09eaf46747.png" width="50px;"></td>
+      <td>the Bird</td>
+      <td>
+        <a href="/admin/edit"><i class="fa fa-pencil" aria-hidden="true"></i> Edit </a> | 
+        <a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+{{end}}
+
+{{define "root-script"}}
+{{end}}
+
+{{define "root-style"}}
+<style>
+  .container-list {
+    margin-top: 100px;
+  }
+  footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    background-color: #000;
+    color: #fff;
+    height: 100px;
+    padding-top: 40px;
+    width: 100%;
+  }
+</style>
+{{end}}

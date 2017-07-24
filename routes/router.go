@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/yuttasakcom/GoAPI/controllers"
-	"github.com/yuttasakcom/GoAPI/middleware"
 )
 
 // Router provider
@@ -14,11 +13,16 @@ func Router() http.Handler {
 	mux := http.NewServeMux()
 	mux.Handle("/-/", http.StripPrefix("/-", http.FileServer(noDir{http.Dir("static")})))
 	mux.Handle("/", controllers.Home("index"))
-	mux.HandleFunc("/about", aboutHandler)
-	mux.Handle("/staff", middleware.Chain(
-		middleware.Authen("Bearer ABCD1234"),
-		middleware.AllowRoles("staff"),
-	)(http.HandlerFunc(staffHandler)))
+	mux.Handle("/news/", controllers.News("newsID"))
+
+	adminMux := http.NewServeMux()
+	adminMux.HandleFunc("/login", controllers.Admin("login"))
+	adminMux.HandleFunc("/list", controllers.Admin("list"))
+	adminMux.HandleFunc("/create", controllers.Admin("create"))
+	adminMux.HandleFunc("/edit", controllers.Admin("edit"))
+
+	mux.Handle("/admin/", http.StripPrefix("/admin", onlyAdmin(adminMux)))
+
 	return mux
 }
 
@@ -41,10 +45,6 @@ func (d noDir) Open(name string) (http.File, error) {
 	return f, nil
 }
 
-func aboutHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("About Page"))
-}
-
-func staffHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Staff!"))
+func onlyAdmin(h http.Handler) http.Handler {
+	return h
 }

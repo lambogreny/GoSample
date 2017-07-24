@@ -1,0 +1,45 @@
+{{define "root-body"}}
+<div class="container">
+  <div class="center-block container-login">
+    <form class="form-signin">
+      <h2 class="form-signin-heading text-center">Admin Login</h2>
+      <label for="inputEmail" class="sr-only">Username</label>
+      <input type="text" class="form-control mb-1" placeholder="Username" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control mb-1" placeholder="Password" required>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="login()">Sign in</button>
+    </form>
+  </div>
+</div>
+{{end}}
+
+{{define "root-script"}}
+<script>
+  function login() {
+    window.location = "http://localhost:8080/admin/list";
+  }
+</script>
+{{end}}
+
+{{define "root-style"}}
+<style>
+  .container-login {
+    margin-top: 150px;
+  }
+  footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    background-color: #000;
+    color: #fff;
+    height: 100px;
+    padding-top: 40px;
+    width: 100%;
+  }
+</style>
+{{end}}

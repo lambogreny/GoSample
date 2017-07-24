@@ -2,13 +2,15 @@ package controllers
 
 import (
 	"net/http"
+
+	"github.com/yuttasakcom/GoAPI/models"
+	"github.com/yuttasakcom/GoAPI/views"
 )
 
 // Home controller
 func Home(p string) http.Handler {
 	switch p {
 	case "index":
-		// This call Services
 		return http.HandlerFunc(index)
 	default:
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -19,11 +21,12 @@ func Home(p string) http.Handler {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	w.Write([]byte(`
-		<!doctype html>
-		<link rel=stylesheet href=/-/css/style.css>
-		<title>GoAPI</title>
-		<p class=red>Home Page</p>
-	`))
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
+	}
+	list, _ := models.ListNews()
+	views.Index(w, &views.IndexData{
+		List: list,
+	})
 }

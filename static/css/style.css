@@ -1,3 +1,25 @@
+body {
+  margin-top: 56px;
+  padding: 0;
+}
+button {
+  cursor: pointer;
+}
 .red {
   color: red;
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  height: 100px;
+  padding-top: 40px;
+}
+
+.container-news {
+  margin-top: 60px;
+  padding: 20px;
+}
+.card-news {
+  padding: 20px;
 }
