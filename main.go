@@ -10,7 +10,7 @@ import (
 
 const (
 	port     = ":8080"
-	mongoURL = "mongodb://127.0.0.1:27017"
+	mongoURL = "mongodb://0.0.0.0:27017"
 )
 
 func main() {
@@ -19,9 +19,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("can not init model; %v", err)
 	}
-	http.ListenAndServe(":8080", h)
-	// err := http.ListenAndServe(":8080", h)
-	// if err != nil {
-	// 	log.Println(err)
-	// }
+	err = http.ListenAndServe(port, h)
+
+	if err != nil {
+		log.Println(err)
+	}
 }
