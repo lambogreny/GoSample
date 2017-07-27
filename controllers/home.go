@@ -25,7 +25,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	list, _ := models.ListNews()
+	list, err := models.ListNews()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 	views.Index(w, &views.IndexData{
 		List: list,
 	})

@@ -3,6 +3,7 @@ package controllers
 import (
 	"net/http"
 
+	"github.com/yuttasakcom/GoAPI/models"
 	"github.com/yuttasakcom/GoAPI/views"
 )
 
@@ -20,5 +21,11 @@ func News(p string) http.Handler {
 }
 
 func newsID(w http.ResponseWriter, r *http.Request) {
-	views.NewsID(w, r)
+	id := r.URL.Path[1:]
+	n, err := models.GetNews(id)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	views.NewsID(w, n)
 }

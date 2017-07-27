@@ -41,7 +41,11 @@ func create(w http.ResponseWriter, r *http.Request) {
 			Detail: r.FormValue("detail"),
 		}
 
-		models.CreateNews(n)
+		err := models.CreateNews(n)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
 
 		http.Redirect(w, r, "/admin/create", http.StatusSeeOther)
 		return

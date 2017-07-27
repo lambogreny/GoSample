@@ -12,12 +12,12 @@ import (
 
 // News struct
 type News struct {
-	ID        bson.ObjectId
+	ID        bson.ObjectId `bson:"_id"`
 	Title     string
 	Image     string
 	Detail    string
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	CreatedAt time.Time `bson:"createdAt"`
+	UpdatedAt time.Time `bson:"updatedAt"`
 }
 
 var (
@@ -33,6 +33,7 @@ func generateID() string {
 
 // CreateNews to mongodb
 func CreateNews(news News) error {
+	news.ID = bson.NewObjectId()
 	news.CreatedAt = time.Now()
 	news.UpdatedAt = news.CreatedAt
 
@@ -62,11 +63,10 @@ func ListNews() ([]*News, error) {
 
 // GetNews retrives news from database
 func GetNews(id string) (*News, error) {
-	objectID := bson.ObjectId(id)
-	if !objectID.Valid() {
+	if !bson.IsObjectIdHex(id) {
 		return nil, fmt.Errorf("Invalid id")
 	}
-
+	objectID := bson.ObjectIdHex(id)
 	s := mongoSession.Copy()
 	defer s.Close()
 	var n News

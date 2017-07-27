@@ -13,7 +13,7 @@ func Router() http.Handler {
 	mux := http.NewServeMux()
 	mux.Handle("/-/", http.StripPrefix("/-", http.FileServer(noDir{http.Dir("static")})))
 	mux.Handle("/", controllers.Home("index"))
-	mux.Handle("/news/", controllers.News("newsID"))
+	mux.Handle("/news/", http.StripPrefix("/news", controllers.News("newsID")))
 
 	adminMux := http.NewServeMux()
 	adminMux.HandleFunc("/login", controllers.Admin("login"))
