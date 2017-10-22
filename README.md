@@ -1,7 +1,8 @@
 ## GoAPI
 > คู่มือการใช้งาน Go APIs ฉบับ YoProgrammer
 
-## Example code
+## Table of Content
+- [Setup](#setup)
 - [Main](#main)
 - [Router](#router)
 - [Middleware](#middleware)
@@ -25,6 +26,18 @@
     - Content
     - Image
     - Vedio
+
+## Setup
+```command
+$ git clone git@github.com:yuttasakcom/GoAPI.git
+$ go get github.com/tdewolff/minify
+$ go get gopkg.in/mgo.v2
+```
+create mongodb
+```command
+git clone git@github.com:yuttasakcom/DockerManual.git && cd DockerManual/examples/mongo
+docker-compose up -d
+```
 
 ## Main
 ```go
