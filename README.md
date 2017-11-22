@@ -1,5 +1,5 @@
 ## GoAPI
-> คู่มือการใช้งาน Go APIs ฉบับ YoProgrammer
+> คู่มือการใช้งาน Go
 
 ## Table of Content
 - [Setup](#setup)
