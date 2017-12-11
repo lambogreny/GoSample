@@ -1,7 +1,7 @@
 ## GoAPI
 > คู่มือการใช้งาน Go
 
-## Table of Content
+## Table of Contents
 - [Setup](#setup)
 - [Main](#main)
 - [Router](#router)
